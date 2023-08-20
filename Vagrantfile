@@ -12,7 +12,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "ansible_local" do |ansible|
     ansible.playbook = "playbooks/clone_roles.yml"
     ansible.extra_vars = {
-      git_repository: "https://github.com/MazPugo/Ansibles_roles.git",
+      git_repository: "https://github.com/MazPugo/Ansible_roles.git",
       git_branch: "main"
     }
   end
@@ -23,10 +23,4 @@ Vagrant.configure("2") do |config|
     ansible.galaxy_command = "sudo ansible-galaxy install --role-file=%{role_file} --roles-path=%{roles_path}"
     ansible.playbook = "playbooks/init.yml"
   end
- 
-  if VAGRANT_COMMAND == "ssh"
-    config.ssh.username = 'panda'
-  end
 end
- 
- 
